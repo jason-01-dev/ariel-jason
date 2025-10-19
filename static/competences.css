@@ -1,0 +1,11 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 20px 100px;
+    background-color: rgb(6, 6, 119);
+    color: azure;
+    position: relative;
+    height: 400px;
+    font-size: larger;
+}
