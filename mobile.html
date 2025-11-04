@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DoGo — Cross-Platform Task Management App (In Development)</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+    padding: 20px;
+}
+
+.card {
+    max-width: 650px;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #dfe6e9;
+    border-left: 6px solid #1abc9c;
+    border-right: 6px solid #1abc9c;
+    border-radius: 10px;
+    padding: 40px 30px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 1.2s ease-in-out;
+    position: relative;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: 2.4em;
+    font-weight: 700;
+    background: linear-gradient(90deg, #1abc9c, #16a085);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    margin-bottom: 0.3em;
+}
+
+h2 {
+    color: #1abc9c;
+    font-size: 1.3em;
+    margin-top: 0;
+    font-weight: 600;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 0;
+    height: 25px;
+    position: relative;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0;
+    background-color: #1abc9c;
+    border-radius: 5px;
+    text-align: right;
+    line-height: 25px;
+    color: white;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2c3e50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    margin: 10px 5px 0 5px;
+}
+
+.button:hover {
+    background-color: #3498db;
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 25px 15px;
+        border-left-width: 4px;
+        border-right-width: 4px;
+    }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.1em; }
+}
+</style>
+</head>
+<body>
+<div class="card">
+    <h1>DoGo</h1>
+    <h2>Cross-Platform Task Management App 📱</h2>
+
+    <p>
+        <strong>DoGo</strong> is under active development, currently focusing on <strong>UI/UX design</strong> and building an efficient <strong>data architecture</strong>.
+    </p>
+
+    <p>
+        <strong>Goal:</strong>
+        <em>Create a fast and intuitive cross-platform task management app using the <strong>MVVM (Model-View-ViewModel)</strong> pattern. Ensure real-time data sync across devices with professional-grade access security.</em>
+        <br><br>
+        <strong>Core Stack:</strong> Flutter (Dart), Firebase (Firestore/Authentication), Provider/Riverpod.
+    </p>
+
+    <div class="progress-bar">
+        <div class="progress-bar-fill" data-progress="50">0% Completed</div>
+    </div>
+
+    <p>
+        The source code and demo will be published once front-end development and full Firebase integration are completed. Thank you for your patience!
+    </p>
+
+    <a href="https://your-web-version-link.com" target="_blank" class="button">Try Web Version</a>
+    <a href="index.html" class="button">Return to Portfolio</a>
+
+    <p style="margin-top: 40px;">
+        Follow progress on GitHub:
+        <a href="https://github.com/jason-01-dev" target="_blank">jason-01-dev</a>
+    </p>
+</div>
+
+<script>
+const fill = document.querySelector('.progress-bar-fill');
+const target = parseInt(fill.dataset.progress);
+let start = null;
+
+function animate(timestamp) {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / 20, target);
+    fill.style.width = progress + '%';
+    fill.textContent = Math.floor(progress) + '% Completed';
+    if (progress < target) {
+        requestAnimationFrame(animate);
+    } else {
+        fill.style.width = target + '%';
+        fill.textContent = target + '% Completed';
+    }
+}
+
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>
