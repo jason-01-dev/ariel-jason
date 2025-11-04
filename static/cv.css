@@ -116,3 +116,35 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .cv-container {
+    grid-template-columns: 1fr;
+  }
+
+  .left-column, .right-column {
+    padding: 25px;
+  }
+
+  .right-column {
+    padding-top: 0;
+  }
+
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  .left-column h1 {
+    font-size: 20px;
+  }
+
+  .left-column h2 {
+    font-size: 14px;
+  }
+
+  .right-column h2 {
+    font-size: 18px;
+  }
+}
