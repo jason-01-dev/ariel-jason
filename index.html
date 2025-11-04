@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="Portfolio of Ariel JS, a Full-Stack Developer and Security Expert, transforming ideas into high-performance web and mobile solutions.">
     <title>Ariel JS | Full-Stack Developer & Security Expert</title>
     <link rel="stylesheet" href="static/styles.css">
-    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    
+
     <nav class="navbar-fixe">
         <div class="logo">Ariel JS</div>
         <ul class="nav-links">
             <li><a href="#accueil">Home</a></li>
-            <li><a href="#projets">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
             <li><a href="#competences">Skills</a></li>
+            <li><a href="#projets">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="burger-menu" aria-label="Navigation Menu">
@@ -26,7 +27,6 @@
 
     <header class="hero-section" id="accueil">
         <div class="presentation-contenu">
-            
             <div class="photo-profil">
                 <img src="images/ariel.jpg" alt="Ariel JS Profile Picture" class="photo-ronde">
             </div>
@@ -40,111 +40,166 @@
 
     <main>
         
+        <section id="about" class="section-standard">
+            <h2 class="titre-section">About Me</h2>
+            <p class="description-section">A brief overview of who I am and what I bring to projects.</p>
+
+            <div class="about-content">
+                <div class="about-text-column">
+                    <p>
+                        I’m <strong>Ariel JS</strong>, a Full-Stack Developer and Security Expert with a focus on building
+                        reliable, secure and maintainable applications. I combine strong engineering practices (TDD, CI/CD)
+                        with security-first design (OWASP principles) to deliver scalable products that users trust.
+                    </p>
+
+                    <p>
+                        My work covers the full lifecycle: product thinking, architecture design, implementation, testing,
+                        deployment and monitoring. I enjoy solving complex problems — from optimizing database queries to
+                        hardening authentication flows and automating deployment pipelines.
+                    </p>
+
+                    <p>
+                        Tools &amp; habits I use daily: <strong>Laravel</strong>, <strong>React</strong>, <strong>Flutter</strong>,
+                        PostgreSQL, Docker, GitHub Actions, and regular security audits. I also value mentorship, clean code,
+                        and readable documentation.
+                    </p>
+
+                    <div class="about-actions">
+                        <a href="images/ariel tshibangu portfolio cv.pdf" download class="bouton-secondaire">
+                            <i class="fa-solid fa-download"></i> Download My CV
+                        </a>
+                        <a href="static/cv.html" target="_blank" class="bouton-primaire">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Try Web Version
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="about-image-column">
+                    <img src="images/ariel2.jpg" alt="About Ariel JS" class="about-image">
+                    </div>
+            </div>
+        </section>
+
+        <section id="education" class="section-standard">
+            <h2 class="titre-section">Education</h2>
+            <p class="description-section">My academic background and continuous learning path.</p>
+
+            <div class="education-timeline">
+                <article class="education-item">
+                    <h3>Bachelor in Computer Science</h3>
+                    <p><strong>Université de Kinshasa</strong></p>
+                    <p>Studied software engineering, database systems and information security. Completed practical projects in full-stack web development and mobile apps.</p>
+                </article>
+
+                <article class="education-item">
+    <h3>Web and Computer Programming Certificate</h3>
+    <p><strong>BYU-Idaho</strong> — 2024–Present</p>
+    <p>A professional certificate program in web development and computer programming, emphasizing practical, project-based learning to prepare for real-world technical challenges.</p>
+</article>
+
+
+                <article class="education-item">
+                    <h3>Online Continuous Learning</h3>
+                    <p><strong>FreeCodeCamp, Coursera, Udemy</strong></p>
+                    <p>Courses on modern frameworks, DevOps practices, cloud fundamentals and cybersecurity topics.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-mini-footer">
+            <div class="mini-footer-content">
+                <p><strong>Driven by Excellence:</strong> I aim to apply my technical skills to solve real-world problems and deliver reliable, secure solutions.</p>
+                <ul>
+                    <li>Showcase my technical expertise in web and mobile development</li>
+                    <li>Deliver secure and high-quality software for clients and teams</li>
+                    <li>Contribute to the developer community through open-source projects</li>
+                    <li>Continuously learn and adopt modern technologies and best practices</li>
+                </ul>
+            </div>
+        </section>
+
         <section class="section-standard" id="competences">
-            <h2 class="titre-section">Expertise & Technologies</h2>
-            <p class="description-section">My technical stack covers the entire development cycle, ensuring performance, scalability, and security.</p>
-            
-            <div class="competences-grille">
-                
-                <article class="domaine-expertise">
-                    <h3>Advanced Front-End Development</h3>
-                    <p>Building modern and highly **responsive** user interfaces using the best **Front-End** architectural practices. Strong command of accessibility and performance optimization (Lighthouse).</p>
-                    <ul class="liste-skills">
-                        <li>**React/Vue.js:** Mastery of Hooks, global state (**Redux/Context API**) and **Next.js/Nuxt.js** architectures (SSR/SSG).</li>
-                        <li>**Web/Design:** Semantic HTML5, CSS (Sass/Less), **Tailwind CSS/Bootstrap**, Strong attention to UX/UI.</li>
-                    </ul>
-                </article>
-
-                <article class="domaine-expertise">
-                    <h3>Back-End & Data Architecture</h3>
-                    <p>Design and implementation of performant and maintainable **microservices** architectures and **RESTful/GraphQL** APIs.</p>
-                    <ul class="liste-skills">
-                        <li>**Frameworks:** **Laravel (TDD/PHPUnit)**, Node.js (Express/NestJS), Python (Django/Flask).</li>
-                        <li>**Databases:** **PostgreSQL** (query optimization), MongoDB, and cache management (Redis/Memcached).</li>
-                    </ul>
-                </article>
-
-                <article class="domaine-expertise">
-                    <h3>Security, DevOps & Agile Methodologies 🛡️</h3>
-                    <p>Integration of security (Security by Design) and continuous deployment practices for fast and reliable delivery.</p>
-                    <ul class="liste-skills">
-                        <li>**Security:** Code audit for vulnerabilities (**XSS, SQLi**), implementation of **OWASP Top 10** standards, Identity Management (IAM).</li>
-                        <li>**DevOps/Agile:** **Docker/Kubernetes**, CI/CD (**GitHub Actions/GitLab**), Versioning (Git), and **Scrum/Kanban Methodologies**.</li>
-                    </ul>
-                </article>
-            </div>
-            <a href="#contact" class="bouton-secondaire">Let's Discuss Your Project</a>
-        </section>
-
-        <hr> <section class="section-standard" id="projets">
-            <h2 class="titre-section">Selected Projects</h2>
-            <p class="description-section">A concrete overview of my achievements, illustrating my ability to deliver complex technical solutions.</p>
-            
-            <div class="liste-projets">
-                <article class="carte-projet">
-                    <h3>Secure E-commerce Platform</h3>
-                    <p>Full design and development of an online store with stock management, payment system, and advanced security audit. *Technologies: Laravel, React, PostgreSQL.*</p>
-                    <a href="devellopment.html" target="_blank" class="in_progress">View Code / Demo</a>
-                </article>
-                
-                <article class="carte-projet">
-                    <h3>Mobile Task Management Application</h3>
-                    <p>Cross-platform application designed for an optimal user experience. Offline features and real-time synchronization. *Technologies: Flutter, Firebase.*</p>
-                    <a href="mobile.html" target="_blank" class="mobile">View Code / Demo</a>
-                </article>
-                
-                <article class="carte-projet">
-                    <h3>Open-Source Contribution</h3>
-                    <p>Maintenance and feature addition on a popular security module, contributing to the developer community.</p>
-                    <a href="https://github.com/jason-01-dev" target="_blank" class="lien-projet">My GitHub</a>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    
-
-
-<hr> 
-<footer id="contact" class="section-contact">
-    <h2 class="titre-section">Let's Connect</h2>
-    <p>Interested in a collaboration? I am open to development opportunities, security consulting, or any new technical challenge. Contact me directly:</p>
-    
-    <div class="coordonnees">
-        <p>
-            <i class="fa-solid fa-envelope"></i> Email: 
-            <a href="mailto:ariel243tshibangu@gmail.com">ariel243tshibangu@gmail.com</a>
-        </p>
-        
-        <p>
-            <i class="fa-solid fa-phone"></i> Phone: 
-            +243 819754518
-        </p>
-        
-        <p>
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp: 
-            <a href="https://wa.me/243819754518" target="_blank">Send a Message</a>
-        </p>
-        
-        <p>
-            <i class="fa-brands fa-github"></i> GitHub Profile: 
-            <a href="https://github.com/jason-01-dev" target="_blank">jason-01-dev</a>
-        </p>
-    </div>
-    
-    <div class="copyright">
-        <p>&copy; 2025 Ariel JS. All rights reserved.</p>
-    </div>
-</footer>
-
-
-    <script>
-        const burger = document.querySelector('.burger-menu');
-        const nav = document.querySelector('.nav-links');
-
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-    </script>
-</body>
-</html>
+             <h2 class="titre-section">Expertise & Technologies</h2>
+             <p class="description-section">My technical stack covers the entire development cycle, ensuring performance, scalability, and security.</p>
+             <div class="competences-grille">
+                 <article class="domaine-expertise">
+                     <h3>Advanced Front-End Development</h3>
+                     <p>Building modern and highly <strong>responsive</strong> user interfaces using the best <strong>Front-End</strong> architectural practices. Strong command of accessibility and performance optimization (Lighthouse).</p>
+                     <ul class="liste-skills">
+                         <li><strong>React/Vue.js:</strong> Mastery of Hooks, global state (<strong>Redux/Context API</strong>) and <strong>Next.js/Nuxt.js</strong> architectures (SSR/SSG).</li>
+                         <li><strong>Web/Design:</strong> Semantic HTML5, CSS (Sass/Less), <strong>Tailwind CSS/Bootstrap</strong>, strong attention to UX/UI.</li>
+                     </ul>
+                 </article>
+ 
+                 <article class="domaine-expertise">
+                     <h3>Back-End & Data Architecture</h3>
+                     <p>Design and implementation of performant and maintainable <strong>microservices</strong> architectures and <strong>RESTful/GraphQL</strong> APIs.</p>
+                     <ul class="liste-skills">
+                         <li><strong>Frameworks:</strong> Laravel (TDD/PHPUnit), Node.js (Express/NestJS), Python (Django/Flask).</li>
+                         <li><strong>Databases:</strong> <strong>PostgreSQL</strong> (query optimization), MongoDB, and cache management (Redis/Memcached).</li>
+                     </ul>
+                 </article>
+ 
+                 <article class="domaine-expertise">
+                     <h3>Security, DevOps & Agile Methodologies 🛡️</h3>
+                     <p>Integration of security (Security by Design) and continuous deployment practices for fast and reliable delivery.</p>
+                     <ul class="liste-skills">
+                         <li><strong>Security:</strong> Code audit for vulnerabilities (XSS, SQLi), implementation of <strong>OWASP Top 10</strong> standards, Identity Management (IAM).</li>
+                         <li><strong>DevOps/Agile:</strong> Docker/Kubernetes, CI/CD (GitHub Actions/GitLab), versioning (Git), and Scrum/Kanban methodologies.</li>
+                     </ul>
+                 </article>
+             </div>
+             <a href="#contact" class="bouton-secondaire">Let's Discuss Your Project</a>
+         </section>
+ 
+         <hr>
+         <section class="section-standard" id="projets">
+             <h2 class="titre-section">Selected Projects</h2>
+             <p class="description-section">A concrete overview of my achievements, illustrating my ability to deliver complex technical solutions.</p>
+             
+             <div class="liste-projets">
+                 <article class="carte-projet">
+                     <h3>Secure E-commerce Platform</h3>
+                     <p>Full design and development of an online store with stock management, payment system, and advanced security audit. <em>Technologies: Laravel, React, PostgreSQL.</em></p>
+                     <a href="devellopment.html" target="_blank" class="in_progress">View Code / Demo</a>
+                 </article>
+                 
+                 <article class="carte-projet">
+                     <h3>Mobile Task Management Application</h3>
+                     <p>Cross-platform application designed for an optimal user experience. Offline features and real-time synchronization. <em>Technologies: Flutter, Firebase.</em></p>
+                     <a href="mobile.html" target="_blank" class="mobile">View Code / Demo</a>
+                 </article>
+                 
+                 <article class="carte-projet">
+                     <h3>Open-Source Contribution</h3>
+                     <p>Maintenance and feature addition on a popular security module, contributing to the developer community.</p>
+                     <a href="https://github.com/jason-01-dev" target="_blank" class="lien-projet">My GitHub</a>
+                 </article>
+             </div>
+         </section>
+     </main>
+ 
+     <hr>
+     <footer id="contact" class="section-contact">
+         <h2 class="titre-section">Let's Connect</h2>
+         <p>Interested in a collaboration? I am open to development opportunities, security consulting, or any new technical challenge. Contact me directly:</p>
+         
+         <div class="coordonnees">
+             <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:ariel243tshibangu@gmail.com">ariel243tshibangu@gmail.com</a></p>
+             <p><i class="fa-solid fa-phone"></i> Phone: +243 819754518</p>
+             <p><i class="fa-brands fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/243819754518" target="_blank">Send a Message</a></p>
+             <p><i class="fa-brands fa-github"></i> GitHub Profile: <a href="https://github.com/jason-01-dev" target="_blank">jason-01-dev</a></p>
+         </div>
+         
+         <div class="copyright">
+             <p>&copy; 2025 Ariel JS. All rights reserved.</p>
+         </div>
+     </footer>
+ 
+     <script>
+         const burger = document.querySelector('.burger-menu');
+         const nav = document.querySelector('.nav-links');
+         burger.addEventListener('click', () => nav.classList.toggle('active'));
+     </script>
+ </body>
+ </html>
