@@ -40,7 +40,7 @@
 
     <main>
         
-        <section id="about" class="section-standard">
+        <section id="about" class="section-standard scroll-reveal">
             <h2 class="titre-section">About Me</h2>
             <p class="description-section">A brief overview of who I am and what I bring to projects.</p>
 
@@ -80,7 +80,7 @@
             </div>
         </section>
 
-        <section id="education" class="section-standard">
+        <section id="education" class="section-standard scroll-reveal">
             <h2 class="titre-section">Education</h2>
             <p class="description-section">My academic background and continuous learning path.</p>
 
@@ -92,10 +92,10 @@
                 </article>
 
                 <article class="education-item">
-    <h3>Web and Computer Programming Certificate</h3>
-    <p><strong>BYU-Idaho</strong> — 2024–Present</p>
-    <p>A professional certificate program in web development and computer programming, emphasizing practical, project-based learning to prepare for real-world technical challenges.</p>
-</article>
+            <h3>Web and Computer Programming Certificate</h3>
+            <p><strong>BYU-Idaho</strong> — 2024–Present</p>
+            <p>A professional certificate program in web development and computer programming, emphasizing practical, project-based learning to prepare for real-world technical challenges.</p>
+        </article>
 
 
                 <article class="education-item">
@@ -106,7 +106,7 @@
             </div>
         </section>
 
-        <section class="section-mini-footer">
+        <section class="section-mini-footer scroll-reveal">
             <div class="mini-footer-content">
                 <p><strong>Driven by Excellence:</strong> I aim to apply my technical skills to solve real-world problems and deliver reliable, secure solutions.</p>
                 <ul>
@@ -118,7 +118,7 @@
             </div>
         </section>
 
-        <section class="section-standard" id="competences">
+        <section class="section-standard scroll-reveal" id="competences">
              <h2 class="titre-section">Expertise & Technologies</h2>
              <p class="description-section">My technical stack covers the entire development cycle, ensuring performance, scalability, and security.</p>
              <div class="competences-grille">
@@ -153,7 +153,7 @@
          </section>
  
          <hr>
-         <section class="section-standard" id="projets">
+         <section class="section-standard scroll-reveal" id="projets">
              <h2 class="titre-section">Selected Projects</h2>
              <p class="description-section">A concrete overview of my achievements, illustrating my ability to deliver complex technical solutions.</p>
              
@@ -180,26 +180,50 @@
      </main>
  
      <hr>
-     <footer id="contact" class="section-contact">
-         <h2 class="titre-section">Let's Connect</h2>
-         <p>Interested in a collaboration? I am open to development opportunities, security consulting, or any new technical challenge. Contact me directly:</p>
-         
-         <div class="coordonnees">
-             <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:ariel243tshibangu@gmail.com">ariel243tshibangu@gmail.com</a></p>
-             <p><i class="fa-solid fa-phone"></i> Phone: +243 819754518</p>
-             <p><i class="fa-brands fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/243819754518" target="_blank">Send a Message</a></p>
-             <p><i class="fa-brands fa-github"></i> GitHub Profile: <a href="https://github.com/jason-01-dev" target="_blank">jason-01-dev</a></p>
-         </div>
-         
-         <div class="copyright">
-             <p>&copy; 2025 Ariel JS. All rights reserved.</p>
-         </div>
-     </footer>
+     <footer id="contact" class="section-contact scroll-reveal">
+          <h2 class="titre-section">Let's Connect</h2>
+          <p>Interested in a collaboration? I am open to development opportunities, security consulting, or any new technical challenge. Contact me directly:</p>
+          
+          <div class="coordonnees">
+              <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:ariel243tshibangu@gmail.com">ariel243tshibangu@gmail.com</a></p>
+              <p><i class="fa-solid fa-phone"></i> Phone: +243 819754518</p>
+              <p><i class="fa-brands fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/243819754518" target="_blank">Send a Message</a></p>
+              <p><i class="fa-brands fa-github"></i> GitHub Profile: <a href="https://github.com/jason-01-dev" target="_blank">jason-01-dev</a></p>
+          </div>
+          
+          <div class="copyright">
+              <p>&copy; 2025 Ariel JS. All rights reserved.</p>
+          </div>
+      </footer>
  
-     <script>
-         const burger = document.querySelector('.burger-menu');
-         const nav = document.querySelector('.nav-links');
-         burger.addEventListener('click', () => nav.classList.toggle('active'));
-     </script>
+      <script>
+          const burger = document.querySelector('.burger-menu');
+          const nav = document.querySelector('.nav-links');
+          burger.addEventListener('click', () => nav.classList.toggle('active'));
+      </script>
+
+      <script>
+        const observerOptions = {
+            root: null, 
+            rootMargin: '0px',
+            threshold: 0.1 
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                
+                if (entry.isIntersecting) {
+                    
+                    entry.target.classList.add('visible');
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        elementsToObserve.forEach(element => {
+            observer.observe(element);
+        });
+      </script>
  </body>
  </html>

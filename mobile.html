@@ -89,6 +89,7 @@ p {
     border-radius: 5px;
     transition: all 0.3s ease;
     margin: 10px 5px 0 5px;
+    cursor: pointer;
 }
 
 .button:hover {
@@ -96,6 +97,81 @@ p {
     transform: scale(1.05);
 }
 
+/* --- MODAL (Avertissement) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h3 {
+    color: #1abc9c;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.continue-btn {
+    background-color: #1abc9c;
+    color: white;
+}
+
+.continue-btn:hover {
+    background-color: #16a085;
+}
+
+.cancel-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #c0392b;
+}
+
+/* --- Responsive --- */
 @media (max-width: 600px) {
     .card {
         padding: 25px 15px;
@@ -131,13 +207,29 @@ p {
         The source code and demo will be published once front-end development and full Firebase integration are completed. Thank you for your patience!
     </p>
 
-    <a href="https://your-web-version-link.com" target="_blank" class="button">Try Web Version</a>
+    <button id="tryButton" class="button">Try Web Version</button>
     <a href="index.html" class="button">Return to Portfolio</a>
 
     <p style="margin-top: 40px;">
         Follow progress on GitHub:
         <a href="https://github.com/jason-01-dev" target="_blank">jason-01-dev</a>
     </p>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="warningModal">
+    <div class="modal-content">
+        <h3>⚠️ Beta Version Notice</h3>
+        <p>
+            This web version of <strong>DoGo</strong> is currently in <strong>beta testing</strong>.<br>
+            You may experience slow data loading or minor bugs.<br><br>
+            Please allow 1–2 minutes for data to fully load.
+        </p>
+        <div class="modal-buttons">
+            <button class="continue-btn" id="continueBtn">Continue</button>
+            <button class="cancel-btn" id="cancelBtn">Exit</button>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -157,8 +249,26 @@ function animate(timestamp) {
         fill.textContent = target + '% Completed';
     }
 }
-
 requestAnimationFrame(animate);
+
+// --- LOGIQUE DU MODAL ---
+const modal = document.getElementById('warningModal');
+const tryButton = document.getElementById('tryButton');
+const continueBtn = document.getElementById('continueBtn');
+const cancelBtn = document.getElementById('cancelBtn');
+
+tryButton.addEventListener('click', () => {
+    modal.style.display = 'flex';
+});
+
+continueBtn.addEventListener('click', () => {
+    window.open('https://jason-01-dev.github.io/dogoapp/', '_blank');
+    modal.style.display = 'none';
+});
+
+cancelBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
 </script>
 </body>
 </html>
