@@ -1,17 +1,14 @@
-
+ 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
 
 :root {
-    
     --couleur-primaire: #3498db; 
     --couleur-secondaire: #2c3e50; 
     --couleur-neutre: #ecf0f1; 
     --couleur-texte-sombre: #333;
     --couleur-texte-clair: #ffffff;
     
-    
     --police-principale: 'Poppins', sans-serif;
-    
     
     --hauteur-navbar: 70px;
 }
@@ -23,7 +20,9 @@
 }
 
 html {
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
+ 
+    scroll-padding-top: var(--hauteur-navbar); 
 }
 
 body {
@@ -34,7 +33,7 @@ body {
     line-height: 1.6;
 }
 
-
+ 
 .navbar-fixe {
     position: fixed;
     top: 0;
@@ -81,6 +80,7 @@ body {
     color: var(--couleur-primaire);
 }
 
+ 
 .navbar-fixe .nav-links a::after {
     content: '';
     position: absolute;
@@ -106,7 +106,7 @@ body {
     cursor: pointer;
 }
 
-
+ 
 .hero-section {
     min-height: calc(100vh - var(--hauteur-navbar)); 
     display: flex;
@@ -178,6 +178,7 @@ body {
     margin-right: auto;
 }
 
+/* BOUTONS */
 .bouton-primaire,
 .bouton-secondaire {
     display: inline-block;
@@ -215,6 +216,7 @@ body {
     transform: translateY(-3px);
 }
 
+ 
 .section-standard {
     padding: 80px 5%;
     max-width: 1200px;
@@ -247,8 +249,7 @@ body {
     color: #666;
 }
 
-
-
+ 
 .about-content {
     max-width: 1000px;
     margin: 0 auto; 
@@ -258,7 +259,7 @@ body {
     text-align: left; 
 }
 
-
+/* Desktop layout for About */
 @media (min-width: 900px) {
     .about-content {
         display: grid;
@@ -266,22 +267,19 @@ body {
         gap: 50px;
     }
     
-   
     .about-actions {
         grid-column: 1 / -1; 
     }
     
-   
     .about-text-column,
     .about-image-column {
         min-height: 100%;
     }
 }
 
-
 .about-image-column img {
     max-width: 100%; 
-    height: auto;    
+    height: auto;     
     display: block;
     border-radius: 8px; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
@@ -299,7 +297,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    justify-content: flex-start; /* Boutons à gauche */
+    justify-content: flex-start;
 }
 
 .about-actions .bouton-secondaire i,
@@ -307,10 +305,7 @@ body {
     margin-right: 8px;
 }
 
-
-/* ------------------------------------------------------ */
-/* --- 2. EDUCATION (Timeline Alignée à Gauche) --- */
-/* ------------------------------------------------------ */
+ 
 #education {
     background-color: var(--couleur-neutre);
     padding: 80px 5%;
@@ -324,7 +319,7 @@ body {
     text-align: left;
 }
 
-/* Barre Bleue Améliorée (avec bordure) */
+ 
 .education-timeline::before {
     content: '';
     position: absolute;
@@ -333,7 +328,7 @@ body {
     bottom: 0;
     width: 5px; 
     background-color: var(--couleur-primaire); 
-    border-radius: 2px; /* Adoucir les bords */
+    border-radius: 2px;
     box-shadow: 0 0 5px rgba(52, 152, 219, 0.4); 
 }
 
@@ -353,7 +348,7 @@ body {
     transform: translateY(-3px);
 }
 
-/* Cercles sur la barre bleue */
+ 
 .education-item::before {
     content: '';
     position: absolute;
@@ -373,45 +368,33 @@ body {
     margin-bottom: 5px;
 }
 
-
-/* ----------------------------------------------------- */
-/* --- 3. MINI-FOOTER OBJECTIFS (Pleine Largeur, Alignement à Gauche) --- */
-/* ----------------------------------------------------- */
-
+ 
 .section-mini-footer {
     background: linear-gradient(135deg, var(--couleur-neutre) 0%, #f0f4f7 100%); 
     padding: 60px 5%;
-    text-align: left; /* Aligner tout à gauche dans le bloc */
-    border-radius: 0; 
+    text-align: left;
     margin: 60px auto;
     max-width: 100%; 
-    box-shadow: none; 
     border-top: 5px solid var(--couleur-primaire); 
-    border-bottom: none; 
 }
 
-/* Conteneur pour le contenu (limite la largeur mais le laisse aligné à gauche dans l'espace) */
 .mini-footer-content {
     max-width: 900px;
-    margin: 0 auto; /* Permet au contenu d'être centré globalement */
-    text-align: left; /* S'assure que le contenu est aligné à gauche */
+    margin: 0 auto;
+    text-align: left;
 }
 
-/* Texte d'introduction (proverbe) */
 .section-mini-footer .mini-footer-content p {
     font-size: 1.4em;
     font-weight: 700;
     color: var(--couleur-secondaire);
     margin-bottom: 30px;
     padding: 0 20px;
-    text-align: left; 
 }
-
 
 .section-mini-footer .mini-footer-content ul {
     list-style: none;
     padding-left: 20px; 
-    text-align: left; 
 }
 
 .section-mini-footer .mini-footer-content ul li {
@@ -422,6 +405,7 @@ body {
     padding-left: 35px;
 }
 
+ 
 .section-mini-footer .mini-footer-content ul li::before {
     content: "\f00c"; 
     font-family: 'Font Awesome 6 Free';
@@ -432,7 +416,7 @@ body {
     font-size: 1.2em;
 }
 
-
+ 
 .competences-grille {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -466,13 +450,14 @@ body {
 }
 
 .liste-skills li {
+    
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%233498db"><path d="M20 6L9 17l-5-5"/></svg>') no-repeat left center;
     background-size: 16px;
     padding-left: 25px;
     margin-bottom: 8px;
 }
 
-
+ 
 .liste-projets {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -498,21 +483,7 @@ body {
     margin-bottom: 10px;
 }
 
-.lien-projet {
-    color: var(--couleur-primaire);
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: 15px;
-    display: block;
-    transition: color 0.3s;
-}
-
-.lien-projet:hover {
-    text-decoration: underline;
-}
-
-
-.in_progress, .mobile {
+.lien-projet, .in_progress, .mobile {
     color: var(--couleur-secondaire);
     text-decoration: none;
     font-weight: 600;
@@ -520,12 +491,16 @@ body {
     display: block;
     transition: color 0.3s;
 }
+
+.lien-projet { color: var(--couleur-primaire); }
+
+.lien-projet:hover { text-decoration: underline; }
+
 .in_progress:hover, .mobile:hover {
     color: var(--couleur-primaire);
 }
 
-
-
+ 
 .section-contact {
     background-color: var(--couleur-secondaire);
     color: var(--couleur-texte-clair);
@@ -579,7 +554,22 @@ body {
 }
 
 
+.scroll-reveal {
+   
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.8s ease-out, transform 0.6s ease-out; 
+    will-change: opacity, transform; 
+}
 
+.scroll-reveal.visible {
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+/* =========================================
+   12. RESPONSIVE (MOBILE)
+   ========================================= */
 @media (max-width: 768px) {
     .navbar-fixe {
         height: 60px;
@@ -652,9 +642,9 @@ body {
     
     .about-image-column {
        display: block; 
-        margin: 20px auto 0; 
-        width: 100%; 
-        max-width: 300px;
+       margin: 20px auto 0; 
+       width: 100%; 
+       max-width: 300px;
     }
 
     .coordonnees {
@@ -663,33 +653,13 @@ body {
     .coordonnees p {
         justify-content: center;
     }
-}
 
+    #about .titre-section,
+    #about .description-section {
+        text-align: center; 
+    }
 
-#about .titre-section,
-#about .description-section {
-    text-align: center; 
-}
-
-#about .titre-section::after {
-    margin: 10px 0 20px 0; 
-    margin-left: 0; 
-}
-.scroll-reveal {
-    
-    opacity: 5; 
-   
-    transform: translateY(20px); 
-   
-    transition: opacity 0.8s ease-out, transform 0.6s ease-out; 
-   
-    will-change: opacity, transform; 
-}
-
-
-.scroll-reveal.visible {
-   
-    opacity: 1; 
-   
-    transform: translateY(0); 
+    #about .titre-section::after {
+        margin: 10px auto 20px auto; 
+    }
 }
