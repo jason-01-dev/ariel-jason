@@ -1,4 +1,8 @@
+# robots.txt pour ariel-jason-tshibangu.vercel.app
+
 User-agent: *
+Disallow: /admin/
+Disallow: /private/
 Allow: /
 
-Sitemap: https://jason-01-dev.github.io/ariel-jason/sitemap.xml
+Sitemap: https://ariel-jason-tshibangu.vercel.app/sitemap.xml
