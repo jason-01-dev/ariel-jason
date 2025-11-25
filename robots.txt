@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jason-01-dev.github.io/ariel-jason/sitemap.xml
