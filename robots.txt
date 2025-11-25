@@ -5,4 +5,4 @@ Disallow: /admin/
 Disallow: /private/
 Allow: /
 
-Sitemap: https://ariel-jason-tshibangu.vercel.app/sitemap.xml
+Sitemap: https://ariel-jason-tshibangu.vercel.app/sitemap-2025.xml.xml
