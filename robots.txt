@@ -1,6 +1,7 @@
+# robots.txt for https://ariel-jason-tshibangu.vercel.app
 User-agent: *
 Disallow: /admin/
 Disallow: /private/
-Allow: /
 
+# Sitemap location
 Sitemap: https://ariel-jason-tshibangu.vercel.app/sitemap.xml
