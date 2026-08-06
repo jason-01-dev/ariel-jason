@@ -37,6 +37,19 @@ export default function AdminPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
+  const [authMode, setAuthMode] = useState<"login" | "register" | "forgot">("login");
+  const [registerForm, setRegisterForm] = useState({
+    username: "",
+    password: "",
+    displayName: "",
+    email: "",
+    secret: "",
+  });
+  const [resetForm, setResetForm] = useState({
+    username: "",
+    newPassword: "",
+    secret: "",
+  });
   const [tab, setTab] = useState<Tab>("hero");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -162,6 +175,42 @@ export default function AdminPage() {
     }
     setPassword("");
     await loadAll();
+  }
+
+  async function createAdmin(e: FormEvent) {
+    e.preventDefault();
+    setLoginError("");
+    const res = await fetch("/api/auth/setup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(registerForm),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      setLoginError(data.error || "Création impossible.");
+      return;
+    }
+    setRegisterForm({ username: "", password: "", displayName: "", email: "", secret: "" });
+    setAuthMode("login");
+    flash("Compte admin créé. Connecte-toi.");
+  }
+
+  async function resetPassword(e: FormEvent) {
+    e.preventDefault();
+    setLoginError("");
+    const res = await fetch("/api/auth/forgot", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(resetForm),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      setLoginError(data.error || "Réinitialisation impossible.");
+      return;
+    }
+    setResetForm({ username: "", newPassword: "", secret: "" });
+    setAuthMode("login");
+    flash("Mot de passe réinitialisé. Connecte-toi.");
   }
 
   async function logout() {
@@ -291,38 +340,198 @@ export default function AdminPage() {
       <div className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6">
         <h1 className="mb-1 text-2xl font-bold text-white">Compte propriétaire</h1>
         <p className="mb-6 text-sm text-[var(--text-muted)]">
-          Connecte-toi pour modifier 100 % du contenu du portfolio.
+          Connecte-toi ou crée un compte admin pour modifier le contenu du portfolio.
         </p>
-        <form onSubmit={login} className="card flex flex-col gap-4 p-6">
-          <div>
-            <label className={label}>Identifiant</label>
-            <input
-              className={input}
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              autoComplete="username"
-              required
-            />
+
+        <div className="card p-4">
+          <div className="mb-4 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                setAuthMode("login");
+                setLoginError("");
+              }}
+              className={
+                authMode === "login"
+                  ? "btn-primary border-0 py-2 text-sm"
+                  : "btn-secondary py-2 text-sm"
+              }
+            >
+              Connexion
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setAuthMode("register");
+                setLoginError("");
+              }}
+              className={
+                authMode === "register"
+                  ? "btn-primary border-0 py-2 text-sm"
+                  : "btn-secondary py-2 text-sm"
+              }
+            >
+              Créer un compte admin
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setAuthMode("forgot");
+                setLoginError("");
+              }}
+              className={
+                authMode === "forgot"
+                  ? "btn-primary border-0 py-2 text-sm"
+                  : "btn-secondary py-2 text-sm"
+              }
+            >
+              Mot de passe oublié
+            </button>
           </div>
-          <div>
-            <label className={label}>Mot de passe</label>
-            <input
-              type="password"
-              className={input}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete="current-password"
-              required
-            />
-          </div>
-          {loginError && <p className="text-sm text-red-400">{loginError}</p>}
-          <button type="submit" className="btn-primary justify-center border-0">
-            Se connecter
-          </button>
-        </form>
-        <p className="mt-4 text-center text-xs text-[var(--text-muted)]">
-          Par défaut après seed : <code>ariel</code> / <code>admin123</code>
-        </p>
+
+          {authMode === "login" && (
+            <form onSubmit={login} className="flex flex-col gap-4 p-2">
+              <div>
+                <label className={label}>Identifiant</label>
+                <input
+                  className={input}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  autoComplete="username"
+                  required
+                />
+              </div>
+              <div>
+                <label className={label}>Mot de passe</label>
+                <input
+                  type="password"
+                  className={input}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="current-password"
+                  required
+                />
+              </div>
+              {loginError && <p className="text-sm text-red-400">{loginError}</p>}
+              <button type="submit" className="btn-primary justify-center border-0">
+                Se connecter
+              </button>
+              <p className="mt-4 text-center text-xs text-[var(--text-muted)]">
+                Par défaut après seed : <code>ariel</code> / <code>admin123</code>
+              </p>
+            </form>
+          )}
+
+          {authMode === "register" && (
+            <form onSubmit={createAdmin} className="flex flex-col gap-4 p-2">
+              <div>
+                <label className={label}>Identifiant</label>
+                <input
+                  className={input}
+                  value={registerForm.username}
+                  onChange={(e) =>
+                    setRegisterForm((prev) => ({ ...prev, username: e.target.value }))
+                  }
+                  required
+                />
+              </div>
+              <div>
+                <label className={label}>Nom affiché</label>
+                <input
+                  className={input}
+                  value={registerForm.displayName}
+                  onChange={(e) =>
+                    setRegisterForm((prev) => ({ ...prev, displayName: e.target.value }))
+                  }
+                />
+              </div>
+              <div>
+                <label className={label}>E-mail</label>
+                <input
+                  type="email"
+                  className={input}
+                  value={registerForm.email}
+                  onChange={(e) =>
+                    setRegisterForm((prev) => ({ ...prev, email: e.target.value }))
+                  }
+                />
+              </div>
+              <div>
+                <label className={label}>Mot de passe</label>
+                <input
+                  type="password"
+                  className={input}
+                  value={registerForm.password}
+                  onChange={(e) =>
+                    setRegisterForm((prev) => ({ ...prev, password: e.target.value }))
+                  }
+                  required
+                />
+              </div>
+              <div>
+                <label className={label}>Code de configuration</label>
+                <input
+                  className={input}
+                  value={registerForm.secret}
+                  onChange={(e) =>
+                    setRegisterForm((prev) => ({ ...prev, secret: e.target.value }))
+                  }
+                  placeholder="Secret admin (env)"
+                  required
+                />
+              </div>
+              {loginError && <p className="text-sm text-red-400">{loginError}</p>}
+              <button type="submit" className="btn-primary justify-center border-0">
+                Créer le compte admin
+              </button>
+            </form>
+          )}
+
+          {authMode === "forgot" && (
+            <form onSubmit={resetPassword} className="flex flex-col gap-4 p-2">
+              <div>
+                <label className={label}>Identifiant</label>
+                <input
+                  className={input}
+                  value={resetForm.username}
+                  onChange={(e) =>
+                    setResetForm((prev) => ({ ...prev, username: e.target.value }))
+                  }
+                  required
+                />
+              </div>
+              <div>
+                <label className={label}>Nouveau mot de passe</label>
+                <input
+                  type="password"
+                  className={input}
+                  value={resetForm.newPassword}
+                  onChange={(e) =>
+                    setResetForm((prev) => ({ ...prev, newPassword: e.target.value }))
+                  }
+                  required
+                />
+              </div>
+              <div>
+                <label className={label}>Code de récupération</label>
+                <input
+                  className={input}
+                  value={resetForm.secret}
+                  onChange={(e) =>
+                    setResetForm((prev) => ({ ...prev, secret: e.target.value }))
+                  }
+                  placeholder="Secret admin (env)"
+                  required
+                />
+              </div>
+              {loginError && <p className="text-sm text-red-400">{loginError}</p>}
+              <button type="submit" className="btn-primary justify-center border-0">
+                Réinitialiser le mot de passe
+              </button>
+            </form>
+          )}
+        </div>
+
         <button
           type="button"
           onClick={goToSite}
