@@ -1,3 +1,11 @@
+import type {
+  EducationItem,
+  NavLink,
+  Project,
+  SkillBlock,
+  TechItem,
+  Testimonial,
+} from "@prisma/client";
 import { prisma } from "./prisma";
 
 export type SiteContent = {
@@ -216,21 +224,25 @@ export async function getSiteContent(): Promise<SiteContent> {
             contactFormEndpoint: settings.contactFormEndpoint,
           }
         : defaultSettings,
-      navLinks: navLinks.map((n) => ({ id: n.id, label: n.label, href: n.href })),
-      education: education.map((e) => ({
+      navLinks: navLinks.map((n: NavLink) => ({
+        id: n.id,
+        label: n.label,
+        href: n.href,
+      })),
+      education: education.map((e: EducationItem) => ({
         id: e.id,
         title: e.title,
         school: e.school,
         description: e.description,
       })),
-      skills: skills.map((s) => ({
+      skills: skills.map((s: SkillBlock) => ({
         id: s.id,
         title: s.title,
         description: s.description,
         icon: s.icon,
         tags: s.tags,
       })),
-      tech: tech.map((t) => ({
+      tech: tech.map((t: TechItem) => ({
         id: t.id,
         category: t.category,
         title: t.title,
@@ -244,7 +256,7 @@ export async function getSiteContent(): Promise<SiteContent> {
         publishedAt: t.publishedAt.toISOString(),
         origin: t.origin,
       })),
-      projects: projects.map((p) => ({
+      projects: projects.map((p: Project) => ({
         id: p.id,
         title: p.title,
         description: p.description,
@@ -254,7 +266,7 @@ export async function getSiteContent(): Promise<SiteContent> {
         imageUrl: p.imageUrl,
         showImage: p.showImage,
       })),
-      testimonials: testimonials.map((t) => ({
+      testimonials: testimonials.map((t: Testimonial) => ({
         id: t.id,
         authorName: t.authorName,
         authorRole: t.authorRole,
