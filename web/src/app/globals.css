@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+:root {
+  --bg-dark: #0b0f14;
+  --bg-elevated: #12181f;
+  --bg-card: #151c24;
+  --accent: #38bdf8;
+  --accent-strong: #0ea5e9;
+  --text-main: #e8eef4;
+  --text-muted: #94a3b8;
+  --border: #243041;
+  --border-hover: #334155;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-main);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+}
+
+::selection {
+  background: rgba(14, 165, 233, 0.35);
+  color: #fff;
+}
+
+.section-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #f8fafc;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  display: inline-block;
+  min-width: min(100%, 280px);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+}
+
+.tech-tag {
+  font-family: "Fira Code", ui-monospace, monospace;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 0.28rem 0.65rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  background: var(--accent-strong);
+  color: #0b0f14;
+  border: 1px solid transparent;
+  transition: background 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #38bdf8;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  transition: background 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-elevated);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: var(--accent-strong);
+}
+
+.form-input::placeholder {
+  color: #64748b;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

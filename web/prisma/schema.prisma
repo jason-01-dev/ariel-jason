@@ -1,0 +1,175 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// Compte propriétaire du site (admin unique)
+model AdminUser {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  displayName  String   @default("Propriétaire")
+  email        String?
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+/// Contenu global du site (singleton id = "main")
+model SiteSettings {
+  id String @id @default("main")
+
+  // Marque / SEO
+  siteName        String @default("Ariel J. Tshibangu")
+  logoText        String @default("Ariel J. Tshibangu")
+  footerText      String @default("Tous droits réservés.")
+  metaTitle       String @default("Ariel J. Tshibangu | Développeur Full-Stack & Expert en Cybersécurité")
+  metaDescription String @default("Portfolio d'Ariel J. Tshibangu — Développeur Full-Stack & Expert en Cybersécurité.")
+
+  // Hero / Accueil
+  heroBadge             String @default("Disponible pour projets & opportunités")
+  heroGreeting          String @default("Bonjour, je suis")
+  heroName              String @default("Ariel J. Tshibangu")
+  heroSubtitle          String @default("Développeur Full-Stack & Expert en Cybersécurité")
+  heroDescription       String @default("Je transforme vos idées en réalités numériques sécurisées et performantes.")
+  heroPhotoUrl          String @default("/images/ariel.jpg")
+  heroCtaPrimaryLabel   String @default("Découvrir mes projets")
+  heroCtaPrimaryHref    String @default("#projets")
+  heroCtaSecondaryLabel String @default("Me contacter")
+  heroCtaSecondaryHref  String @default("#contact")
+
+  // À propos
+  aboutTitle           String   @default("À propos")
+  aboutIntro           String   @default("Conception d'applications de bout en bout avec une sécurité intégrée dès le départ.")
+  aboutBody1           String   @default("Spécialiste en ingénierie logicielle et cybersécurité.")
+  aboutBody2           String   @default("De l'optimisation PostgreSQL à la sécurisation des flux d'authentification.")
+  aboutCvPdfUrl        String   @default("/images/arieltsh.pdf")
+  aboutCvWebUrl        String   @default("/static/cv.html")
+  aboutExcellenceTitle String   @default("Domaines d'excellence")
+  aboutExcellenceItems String[] @default([])
+
+  // Titres de sections listes
+  educationTitle    String @default("Éducation & parcours")
+  educationIntro    String @default("Mon parcours académique et ma formation continue.")
+  skillsTitle       String @default("Expertise & stack technique")
+  skillsIntro       String @default("Un ensemble d'outils modernes pour propulser vos projets web et mobiles.")
+  /// Section articles / notes personnelles
+  techTitle         String @default("Articles & notes")
+  techIntro         String @default("Mes analyses, notes techniques et publications — uniquement mon contenu.")
+  projectsTitle     String @default("Projets récents")
+  projectsIntro     String @default("Aperçu de mes réalisations techniques en web, mobile et open-source.")
+  testimonialsTitle String @default("Témoignages")
+  testimonialsIntro String @default("Retours de clients et collaborateurs. Uniquement des témoignages validés.")
+  contactTitle      String @default("Restons en contact")
+  contactIntro      String @default("Un projet en tête ? Une opportunité de collaboration ? Contactez-moi directement.")
+
+  // Contact
+  contactEmail        String @default("ariel243tshibangu@gmail.com")
+  contactPhone        String @default("+243 819 754 518")
+  contactWhatsappUrl  String @default("https://wa.me/243819754518")
+  contactGithubUrl    String @default("https://github.com/jason-01-dev")
+  contactGithubLabel  String @default("github.com/jason-01-dev")
+  contactFormEndpoint String @default("https://formspree.io/f/mwvgjvwr")
+
+  /// RSS désactivé — contenu propriétaire uniquement
+  newsAutoSync          Boolean   @default(false)
+  newsLastSyncAt        DateTime?
+  newsSyncIntervalHours Int       @default(6)
+
+  updatedAt DateTime @updatedAt
+}
+
+model EducationItem {
+  id          String   @id @default(cuid())
+  title       String
+  school      String
+  description String
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SkillBlock {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  icon        String   @default("fa-solid fa-code")
+  tags        String[] @default([])
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  tags        String[] @default([])
+  linkLabel   String   @default("Voir le projet")
+  linkUrl     String   @default("#")
+  /// Image du projet (optionnelle)
+  imageUrl    String?
+  /// Afficher l'image sur le site public
+  showImage   Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+/// Actualités tech mondiales (section type média / news)
+model TechItem {
+  id          String   @id @default(cuid())
+  /// Rubrique : IA, Cybersécurité, Cloud, Mobile, Hardware, Startups…
+  category    String
+  /// Titre de l'article
+  title       String
+  /// Chapô / résumé court
+  description String
+  /// Corps de l'article (optionnel)
+  content     String   @default("")
+  /// Image de une
+  imageUrl    String?
+  /// Média / source (ex: TechCrunch, The Verge)
+  source      String?
+  /// Lien vers l'article original
+  sourceUrl   String?
+  tags        String[] @default([])
+  /// À la une (grande carte)
+  featured    Boolean  @default(false)
+  publishedAt DateTime @default(now())
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+  /// manual = ajout admin | rss = import automatique
+  origin      String   @default("manual")
+  /// ID unique feed (guid/link) pour éviter les doublons RSS
+  externalId  String?  @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Testimonial {
+  id         String   @id @default(cuid())
+  authorName String
+  authorRole String
+  company    String?
+  content    String
+  rating     Int      @default(5)
+  published  Boolean  @default(false)
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model NavLink {
+  id        String  @id @default(cuid())
+  label     String
+  href      String
+  sortOrder Int     @default(0)
+  published Boolean @default(true)
+}

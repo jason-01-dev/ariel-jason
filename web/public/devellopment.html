@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendora — Secure & Intelligent E-commerce Platform (In Development)</title>
+    <style>
+        /* === Base Styles === */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 650px;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #dfe6e9;
+            border-left: 6px solid #3498db; 
+            border-right: 6px solid #3498db;
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+            animation: fadeIn 1.2s ease-in-out;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2.4em;
+            font-weight: 700;
+            background: linear-gradient(90deg, #3498db, #1abc9c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            margin-bottom: 0.3em;
+        }
+
+        h2 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-top: 0;
+            font-weight: 600;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* === Progress Bar === */
+        .progress-bar {
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px 0;
+            height: 25px;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0;
+            background-color: #3498db;
+            border-radius: 5px;
+            text-align: right;
+            line-height: 25px;
+            color: white;
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        /* === Button === */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .button:hover {
+            background-color: #1abc9c;
+            transform: scale(1.05);
+        }
+
+        /* === Responsive === */
+        @media (max-width: 600px) {
+            .card {
+                padding: 25px 15px;
+                border-left-width: 4px;
+                border-right-width: 4px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Vendora</h1>
+        <h2>Secure & Intelligent E-commerce Platform 🛠️</h2>
+
+        <p>
+            <strong>Vendora</strong> is currently under active development to ensure the highest standards of 
+            <strong>performance</strong>, <strong>architecture</strong>, and <strong>security</strong> from the ground up.
+        </p>
+
+        <p>
+            <strong>Goal:</strong>
+            <em>To deliver a <strong>next-generation e-commerce solution</strong> featuring advanced inventory management, 
+            seamless payment integration, and a strong adherence to <strong>OWASP Top 10</strong> security principles 
+            to protect users and businesses alike.</em>
+            <br><br>
+            <strong>Core Stack:</strong> Laravel (TDD), React, PostgreSQL, OWASP Standards.
+        </p>
+
+        <div class="progress-bar">
+            <div class="progress-bar-fill" data-progress="75"></div>
+        </div>
+
+        <p>
+            The full platform demo and open-source repository will be released 
+            <strong>once the core modules are fully tested and deployment-ready.</strong>  
+            Stay tuned for the official launch!
+        </p>
+
+        <a href="index.html" class="button">Return to Ariel JS Portfolio</a>
+
+        <p style="margin-top: 40px;">
+            Follow progress on GitHub:
+            <a href="https://github.com/jason-01-dev" target="_blank">jason-01-dev</a>
+        </p>
+    </div>
+
+    <script>
+        // Animation progressive de la barre + texte dynamique
+        const fill = document.querySelector('.progress-bar-fill');
+        const target = parseInt(fill.dataset.progress);
+        let progress = 0;
+
+        const interval = setInterval(() => {
+            if(progress >= target) {
+                clearInterval(interval);
+                fill.textContent = target + '% Completed';
+            } else {
+                progress++;
+                fill.style.width = progress + '%';
+                fill.textContent = progress + '% Completed';
+            }
+        }, 20); // ajuste la vitesse ici (20ms = 2s pour 75%)
+    </script>
+</body>
+</html>
